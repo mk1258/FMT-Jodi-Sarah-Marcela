@@ -30,3 +30,53 @@ qiime dada2 denoise-paired --i-demultiplexed-seqs qiime_out/${run}_demux_cutadap
 qiime metadata tabulate --m-input-file FMT_trimmed_fastqs/denoising-stats.qza --o-visualization FMT_trimmed_fastqs/denoising-stats.qzv
 
 qiime feature-table tabulate-seqs --i-data FMT_trimmed_fastqs/rep-seqs.qza --o-visualization FMT_trimmed_fastqs/rep-seqs.qzv
+
+
+Marcela Lab notebook 10
+
+###activate genomics environment
+# conda activate genomics
+
+###If you have not run fastp yet...
+# cp /tmp/gen711_project_data/fastp-single.sh .
+# chmod +x fastp-single.sh
+
+
+###run fastp
+# ./fastp-single.sh 120 /tmp/gen711_project_data/FMT_3/fmt-tutorial-demux-2 trimmed_fastqs2
+# ./fastp-single.sh 120/tmp/gen711_project_data/FMT_3/fmt-tutorial-demux-1 trimmed_fastqs
+
+###check the file sizes of the polyg trimmed fastq files
+###Are any empty? Those will need to be removed from the directory
+ls -shS
+# ls
+#run the following steps twice. Once for each output directory
+
+###activate qiime
+# conda activate qiime2-2022.8
+
+###import fastqs into a single qiime file
+# qiime tools import --type "SampleData[SequencesWithQuality]" --input-format CasavaOneEightSingleLanePerSampleDirFmt --input-path trimmed_fastqs --output-path FMT_trimmed_fastqs1
+
+# qiime tools import --type "SampleData[SequencesWithQuality]" --input-format CasavaOneEightSingleLanePerSampleDirFmt --input-path trimmed_fastqs2 --output-path FMT_trimmed_fastqs2
+
+###cutadapt
+# qiime cutadapt trim-single --i-demultiplexed-sequences FMT_trimmed_fastqs1.qza --p-front TACGTATGGTGCA --p-discard-untrimmed --p-match-adapter-wildcards --verbose --o-trimmed-sequences trimmed_fastqs/FMT_cutadapt1.qza
+
+# qiime cutadapt trim-single --i-demultiplexed-sequences FMT_trimmed_fastqs2.qza --p-front TACGTATGGTGCA --p-discard-untrimmed --p-match-adapter-wildcards --verbose --o-trimmed-sequences trimmed_fastqs2/FMT_cutadapt2.qza
+
+###qiime demux summarize
+# qiime demux summarize --i-data trimmed_fastqs/FMT_cutadapt1.qza --o-visualization trimmed_fastqs/FMT_demux1.qzv
+
+# qiime demux summarize --i-data trimmed_fastqs2/FMT_cutadapt2.qza --o-visualization trimmed_fastqs2/FMT_demux2.qzv
+
+###denoising
+# qiime dada2 denoise-single --i-demultiplexed-seqs trimmed_fastqs/FMT_cutadapt1.qza --p-trunc-len 50 --p-trim-left 13 --p-n-threads 4 --o-denoising-stats denoising-stats.qza --o-table feature_table.qza --o-representative-sequences rep-seqs.qza
+
+# qiime dada2 denoise-single --i-demultiplexed-seqs trimmed_fastqs2/FMT_cutadapt2.qza --p-trunc-len 50 --p-trim-left 13 --p-n-threads 4 --o-denoising-stats denoising-stats.qza --o-table feature_table.qza --o-representative-sequences rep-seqs.qza
+
+###metadata tabulate
+# qiime metadata tabulate --m-input-file denoising-stats.qza --o-visualization denoising-stats.qzv
+
+###feature table tabulate
+# qiime feature-table tabulate-seqs --i-data rep-seqs.qza --o-visualization rep-seqs.qzv
