@@ -1,13 +1,17 @@
 # FMT-Jodi-Sarah-Marcela
-Sarah Holmes (FMT)
+
+## Authors
+Sarah Holmes 
 Marcela
 Jodi
+
 ## what we are doing our project on
 /tmp/gen711_project_data/FMT
 
+# METHODS
+# make directory trimmed_fastqs
 mkdir trimmed_fastqs
 mkdir trimmed_fastqs2
-# make directory trimmed_fastqs
 
 conda activate genomics
 # move into environment genomics
