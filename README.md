@@ -9,10 +9,10 @@ Jodi
 /tmp/gen711_project_data/FMT
 
 # METHODS
-## make directory trimmed_fastqs
+### make directory trimmed_fastqs
 mkdir trimmed_fastqs
 mkdir trimmed_fastqs2
-## move into environment genomics
+### move into environment genomics
 conda activate genomics
 ## copy fastp-single.sh file into home directory
 cp /tmp/gen711_project_data/fastp-single.sh ~/fastp-single.sh
