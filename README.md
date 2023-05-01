@@ -5,7 +5,7 @@ Jodi
 ## what we are doing our project on
 /tmp/gen711_project_data/FMT
 
-# CODE:
+# METHODS: FECAL MICROBIOTA TRANSPLANT STUDY (METABARCODING)
 
 cp /tmp/gen711_project_data/fastp-single.sh ~/fastp-single.sh 
 
@@ -34,7 +34,7 @@ qiime tools import --type "SampleData[SequencesWithQuality]" \
 --input-path trimmed_fastqs2 \
 --output-path trimmed_fastqs2/FMT_trimmed_fastqs2.qza
 
-## CUTADAPT
+## CUTADAPT: TRIM PRIMERS FROM THE SEQUENCE 
 1
 qiime cutadapt trim-single \
 --i-demultiplexed-sequences trimmed_fastqs/FMT_trimmed_fastqs1.qza \
@@ -53,7 +53,7 @@ qiime cutadapt trim-single \
 --verbose \
 --o-trimmed-sequences trimmed_fastqs2/FMT_cutadapt2.qza
 
-## DEMUX
+## DEMUX: MAKE SUMMARY FILE
 1
 qiime demux summarize \
 --i-data trimmed_fastqs/FMT_cutadapt1.qza \
@@ -64,7 +64,7 @@ qiime demux summarize \
 --i-data trimmed_fastqs2/FMT_cutadapt2.qza \
 --o-visualization trimmed_fastqs2/FMT_demux2.qzv
 
-## DENOISE
+## DENOISE: REMOVE THE LOW QUALITY READS
 1
 qiime dada2 denoise-single \
 --i-demultiplexed-seqs trimmed_fastqs/FMT_cutadapt1.qza \
@@ -85,7 +85,7 @@ qiime dada2 denoise-single \
 --o-table feature_table2.qza \
 --o-representative-sequences rep-seqs2.qza
 
-## METADATA
+## METADATA: 
 1
 qiime metadata tabulate \
 --m-input-file denoising-stats1.qza \
@@ -107,7 +107,7 @@ qiime feature-table tabulate-seqs \
 --i-data rep-seqs2.qza \
 --o-visualization rep-seqs2.qzv
 
-## TAXONOMY
+## TAXONOMY: ASSIGN TAXONOMY TO DATASET
 mkdir FMT_merged
 
 qiime feature-table merge-seqs \
