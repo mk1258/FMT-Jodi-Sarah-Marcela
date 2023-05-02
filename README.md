@@ -60,10 +60,7 @@ qiime taxa barplot --i-table feature_table1.qza --i-taxonomy FMT_merged/FMT-taxo
 qiime taxa barplot --i-table feature_table.qza --i-taxonomy FMT_merged/FMT-taxonomy.qza --o-visualization FMT_merged/barplot-2.qzv
 
 ## Findings
-###plot 1
-
+### plot 1
 https://view.qiime2.org/visualization/?type=html&src=ae7abd73-d1b0-4525-9b3d-57f461424987
-
-###plot 2
-
+### plot 2
 https://view.qiime2.org/visualization/?type=html&src=7d8b9b0e-8727-4742-95da-f26bf93c3b2d
