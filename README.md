@@ -82,7 +82,7 @@ get /home/users/jms1418/FMT_merged/barplot-2.qzv
 
 ## Findings
 ### plot 1
-
+[level-2.csv](https://github.com/jms1418/FMT-Jodi-Sarah-Marcela/files/11383833/level-2.csv)
 ### plot 2
-
+[level-2 (1).csv](https://github.com/jms1418/FMT-Jodi-Sarah-Marcela/files/11383834/level-2.1.csv)
 
