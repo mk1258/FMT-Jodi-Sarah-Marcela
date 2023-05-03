@@ -25,11 +25,8 @@ chmod +x ~/fastp-single.sh
 ./fastp-single.sh 120 /tmp/gen711_project_data/FMT_3/fmt-tutorial-demux-1 trimmed_fastqs
 ### check that neither directory is empty
 cd trimmed_fastqs
-
 ls
-
 cd trimmed_fastqs2
-
 ls
 ### activate the qiime environment
 conda activate qiime2-2022.8
