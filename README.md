@@ -33,7 +33,6 @@ conda activate qiime2-2022.8
 ### import the trimmed FASTQs into qiime files
 qiime tools import --type "SampleData[SequencesWithQuality]" --input-format CasavaOneEightSingleLanePerSampleDirFmt --input-path trimmed_fastqs2 --output-path FMT_trimmed_fastq2
 qiime tools import --type "SampleData[SequencesWithQuality]" --input-format CasavaOneEightSingleLanePerSampleDirFmt --input-path trimmed_fastqs --output-path FMT_trimmed_fastqs1
-### remove primers and adapters of the trimmed fastq sequences
 ### CUTADAPT: Remove primers and adapter from the trimmed fastq sequences
 For Sequence 1:
 qiime cutadapt trim-single \
