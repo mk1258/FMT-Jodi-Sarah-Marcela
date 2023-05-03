@@ -107,7 +107,7 @@ qiime feature-table tabulate-seqs \
 --i-data rep-seqs2.qza \
 --o-visualization rep-seqs2.qzv
 
-## TAXONOMY: ASSIGN TAXONOMY TO DATASET
+## TAXONOMY: ASSIGN TAXONOMY TO DATASET AND MERGE SEQUENCES
 mkdir FMT_merged
 
 qiime feature-table merge-seqs \
@@ -120,6 +120,7 @@ qiime feature-classifier classify-sklearn \
 --i-reads FMT_merged/merged.rep-seqs.qza \
 --o-classification FMT_merged/FMT-taxonomy.qza
 
+## CREATE BARPLOTS 
 qiime taxa barplot \
 --i-table trimmed_fastqs/feature_table1.qza \
 --i-taxonomy FMT_taxonomy.qza \
