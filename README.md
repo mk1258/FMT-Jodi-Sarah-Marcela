@@ -1,9 +1,9 @@
 # FMT-Jodi-Sarah-Marcela
 
 ## Authors
-Sarah Holmes 
-Marcela
-Jodi
+Jodi Stetser
+Sarah Holmes
+Marcela Klofac
 
 ## what we are doing our project on
 /tmp/gen711_project_data/FMT
