@@ -34,8 +34,8 @@ qiime feature-table tabulate-seqs --i-data FMT_trimmed_fastqs/rep-seqs.qza --o-v
 
 Marcela Lab notebook 10
 
-###activate genomics environment
-# conda activate genomics
+#activate genomics environment
+###conda activate genomics
 
 ###If you have not run fastp yet...
 # cp /tmp/gen711_project_data/fastp-single.sh .
