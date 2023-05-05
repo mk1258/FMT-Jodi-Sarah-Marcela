@@ -107,19 +107,15 @@ mkdir FMT_trimmed
 qiime feature-table merge-seqs --i-data rep-seqs1.qza --i-data rep-seqs.qza --o-merged-data FMT_merged/merged.rep-seqs.qza
 ### classify data to a reference sequence & assign taxonomy
 qiime feature-classifier classify-sklearn --i-classifier /tmp/gen711_project_data/reference_databases/classifier.qza --i-reads FMT_merged/merged.rep-seqs.qza --o-classification FMT_merged/FMT-taxonomy.qza
-### create bar graph 1
-qiime taxa barplot --i-table feature_table1.qza --i-taxonomy FMT_merged/FMT-taxonomy.qza --o-visualization FMT_merged/barplot-1.qzv
-### create bar graph 2
-qiime taxa barplot --i-table feature_table.qza --i-taxonomy FMT_merged/FMT-taxonomy.qza --o-visualization FMT_merged/barplot-2.qzv
-
-### create barplot with taxonomy
+### create barplot 1 with taxonomy
 qiime taxa barplot --i-table feature_table-1.qza --m-metadata-file sample-metadata.tsv --i-taxonomy FMT_merged/FMT-taxonomy.qza --o-visualization my-barplot.qzv
-
-### download barplot files to computer
+### create barplot 2 with taxonomy
+qiime taxa barplot --i-table feature_table.qza --m-metadata-file sample-metadata.tsv --i-taxonomy FMT_merged/FMT-taxonomy.qza --o-visualization my-barplot2.qzv
+### download barplot files to computer desktop
 open new terminal
 sftp ron login
-get /home/users/jms1418/FMT_merged/barplot-1.qzv
-get /home/users/jms1418/FMT_merged/barplot-2.qzv
+get /home/users/jms1418/my-barplot.qzv desktop
+get /home/users/jms1418/my-barplot2.qzv desktop
 
 ## Findings
 ### Bar Graph of Sequence 1:
