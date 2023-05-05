@@ -58,17 +58,17 @@ qiime demux summarize --i-data trimmed_fastqs/FMT_cutadapt1.qza --o-visualizatio
 qiime demux summarize --i-data trimmed_fastqs2/FMT_cutadapt2.qza --o-visualization trimmed_fastqs2/FMT_demux2.qzv
 ### denoising - remove errors & low quality reads in the sequences
 qiime dada2 denoise-single --i-demultiplexed-seqs trimmed_fastqs/FMT_cutadapt1.qza --p-trunc-len 50 --p-trim-left 13 --p-n-threads 4 --o-denoising-stats denoising-stats1.qza --o-table feature_table1.qza --o-representative-sequences rep-seqs1.qza
-qiime dada2 denoise-single --i-demultiplexed-seqs trimmed_fastqs2/FMT_cutadapt2.qza --p-trunc-len 50 --p-trim-left 13 --p-n-threads 4 --o-denoising-stats denoising-stats.qza --o-table feature_table.qza --o-representative-sequences rep-seqs.qza
+qiime dada2 denoise-single --i-demultiplexed-seqs trimmed_fastqs2/FMT_cutadapt2.qza --p-trunc-len 50 --p-trim-left 13 --p-n-threads 4 --o-denoising-stats denoising-stats2.qza --o-table feature_table2.qza --o-representative-sequences rep-seqs2.qza
 ### tabulate visualization
 qiime metadata tabulate --m-input-file denoising-stats1.qza --o-visualization denoising-stats1.qzv
-qiime metadata tabulate --m-input-file denoising-stats.qza --o-visualization denoising-stats2.qzv
+qiime metadata tabulate --m-input-file denoising-stats2.qza --o-visualization denoising-stats2.qzv
 ### tabulate table visualization
 qiime feature-table tabulate-seqs --i-data rep-seqs1.qza --o-visualization rep-seqs1.qzv
-qiime feature-table tabulate-seqs --i-data rep-seqs.qza --o-visualization rep-seqs2.qzv
+qiime feature-table tabulate-seqs --i-data rep-seqs2.qza --o-visualization rep-seqs2.qzv
 ### make directory for graphs
 mkdir FMT_trimmed
 ### merge the sequences for tables 
-qiime feature-table merge-seqs --i-data rep-seqs1.qza --i-data rep-seqs.qza --o-merged-data FMT_merged/merged.rep-seqs.qza
+qiime feature-table merge-seqs --i-data rep-seqs1.qza --i-data rep-seqs2.qza --o-merged-data FMT_merged/merged.rep-seqs.qza
 ### classify data to a reference sequence & assign taxonomy
 qiime feature-classifier classify-sklearn --i-classifier /tmp/gen711_project_data/reference_databases/classifier.qza --i-reads FMT_merged/merged.rep-seqs.qza --o-classification FMT_merged/FMT-taxonomy.qza
 ### create bar graph 1
