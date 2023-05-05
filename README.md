@@ -111,6 +111,10 @@ qiime feature-classifier classify-sklearn --i-classifier /tmp/gen711_project_dat
 qiime taxa barplot --i-table feature_table1.qza --i-taxonomy FMT_merged/FMT-taxonomy.qza --o-visualization FMT_merged/barplot-1.qzv
 ### create bar graph 2
 qiime taxa barplot --i-table feature_table.qza --i-taxonomy FMT_merged/FMT-taxonomy.qza --o-visualization FMT_merged/barplot-2.qzv
+
+### create barplot with taxonomy
+qiime taxa barplot --i-table feature_table-1.qza --m-metadata-file sample-metadata.tsv --i-taxonomy FMT_merged/FMT-taxonomy.qza --o-visualization my-barplot.qzv
+
 ### download barplot files to computer
 open new terminal
 sftp ron login
