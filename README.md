@@ -107,6 +107,8 @@ mkdir FMT_trimmed
 qiime feature-table merge-seqs --i-data rep-seqs1.qza --i-data rep-seqs.qza --o-merged-data FMT_merged/merged.rep-seqs.qza
 ### classify data to a reference sequence & assign taxonomy
 qiime feature-classifier classify-sklearn --i-classifier /tmp/gen711_project_data/reference_databases/classifier.qza --i-reads FMT_merged/merged.rep-seqs.qza --o-classification FMT_merged/FMT-taxonomy.qza
+### copy metadata to directory
+cp /tmp/gen711_project_data/FMT_3/sample-metadata.tsv home/users/jms1418
 ### create barplot 1 with taxonomy
 qiime taxa barplot --i-table feature_table1.qza --m-metadata-file sample-metadata.tsv --i-taxonomy FMT_merged/FMT-taxonomy.qza --o-visualization my-barplot.qzv
 ### create barplot 2 with taxonomy
