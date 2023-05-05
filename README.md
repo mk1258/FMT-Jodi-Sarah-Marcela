@@ -75,6 +75,12 @@ qiime feature-classifier classify-sklearn --i-classifier /tmp/gen711_project_dat
 qiime taxa barplot --i-table feature_table1.qza --i-taxonomy FMT_merged/FMT-taxonomy.qza --o-visualization FMT_merged/barplot-1.qzv
 ### create bar graph 2
 qiime taxa barplot --i-table feature_table.qza --i-taxonomy FMT_merged/FMT-taxonomy.qza --o-visualization FMT_merged/barplot-2.qzv
+### add metadata
+qiime taxa barplot --i-table feature_table1.qza --m-metadata-file sample-metadata.tsv --i-taxonomy FMT_merged/FMT-taxonomy.qza --o-visualization my-barplot.qzv 
+qiime taxa barplot --i-table feature_table2.qza --m-metadata-file sample-metadata.tsv --i-taxonomy FMT_merged/FMT-taxonomy.qza --o-visualization my-barplot2.qzv
+### create feature table
+qiime feature-table filter-samples --i-table feature_table1.qza --m-metadata-file metadata.tsv --o-filtered-table new_samples_table1.qza
+qiime feature-table filter-samples --i-table feature_table2.qza --m-metadata-file metadata.tsv --o-filtered-table new_samples_table2.qza
 
 ## Findings
 ### plot 1
