@@ -108,7 +108,7 @@ qiime feature-table merge-seqs --i-data rep-seqs1.qza --i-data rep-seqs.qza --o-
 ### classify data to a reference sequence & assign taxonomy
 qiime feature-classifier classify-sklearn --i-classifier /tmp/gen711_project_data/reference_databases/classifier.qza --i-reads FMT_merged/merged.rep-seqs.qza --o-classification FMT_merged/FMT-taxonomy.qza
 ### create barplot 1 with taxonomy
-qiime taxa barplot --i-table feature_table-1.qza --m-metadata-file sample-metadata.tsv --i-taxonomy FMT_merged/FMT-taxonomy.qza --o-visualization my-barplot.qzv
+qiime taxa barplot --i-table feature_table1.qza --m-metadata-file sample-metadata.tsv --i-taxonomy FMT_merged/FMT-taxonomy.qza --o-visualization my-barplot.qzv
 ### create barplot 2 with taxonomy
 qiime taxa barplot --i-table feature_table.qza --m-metadata-file sample-metadata.tsv --i-taxonomy FMT_merged/FMT-taxonomy.qza --o-visualization my-barplot2.qzv
 ### download barplot files to computer desktop
