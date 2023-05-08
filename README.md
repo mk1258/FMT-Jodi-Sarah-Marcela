@@ -88,3 +88,5 @@ https://view.qiime2.org/visualization/?type=html&src=ae7abd73-d1b0-4525-9b3d-57f
 ### plot 2
 https://view.qiime2.org/visualization/?type=html&src=7d8b9b0e-8727-4742-95da-f26bf93c3b2d
 
+## Database
+classifier = /tmp/gen711_project_data/reference_databases/classifier.qza
