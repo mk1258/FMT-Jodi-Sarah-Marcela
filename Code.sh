@@ -68,4 +68,10 @@ open new terminal
 sftp ron login
 get /home/users/jms1418/FMT_merged/barplot-1.qzv
 get /home/users/jms1418/FMT_merged/barplot-2.qzv
+### Create filted phylogenetic trees
+For sequence 1:
+qiime phylogeny align-to-tree-mafft-fasttree --i-sequences rep-seqs1.qza --o-alignment alignments --o-masked-alignment masked-alignment --o-tree unrooted-tree --o-rooted-tree rooted-tree --p-n-threads 4
+For sequence 2:
+qiime phylogeny align-to-tree-mafft-fasttree --i-sequences rep-seqs.qza --o-alignment alignments2 --o-masked-alignment masked-alignment2 --o-tree unrooted-tree2 --o-rooted-tree rooted-tree2 --p-n-threads 4
 
+qiime diversity core-metrics-phylogenetic --i-phylogeny rooted-tree.qza --i-table feature_table1.qza --p-sampling-depth 1500 --m-metadata-file metadata.tsv --p-n-jobs-or-threads --output-dir core-metrics
