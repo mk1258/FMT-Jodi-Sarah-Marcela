@@ -66,27 +66,30 @@ qiime taxa barplot --i-table feature_table.qza --i-taxonomy FMT_merged/FMT-taxon
 ### download barplot files to computer
 open new terminal
 sftp ron login
-get /home/users/jms1418/FMT_merged/barplot-1.qzv
-get /home/users/jms1418/FMT_merged/barplot-2.qzv
-### Create filted phylogenetic trees
+get /home/users/jms1418/FMT_merged/barplot-1.qzv desktop
+get /home/users/jms1418/FMT_merged/barplot-2.qzv desktop
+### Create filtered phylogenetic trees
 For sequence 1:
 qiime phylogeny align-to-tree-mafft-fasttree --i-sequences rep-seqs1.qza --o-alignment alignments --o-masked-alignment masked-alignment --o-tree unrooted-tree --o-rooted-tree rooted-tree --p-n-threads 4
 For sequence 2:
 qiime phylogeny align-to-tree-mafft-fasttree --i-sequences rep-seqs.qza --o-alignment alignments2 --o-masked-alignment masked-alignment2 --o-tree unrooted-tree2 --o-rooted-tree rooted-tree2 --p-n-threads 4
-
+For sequence 1:
 qiime diversity core-metrics-phylogenetic --i-phylogeny rooted-tree.qza --i-table feature_table1.qza --p-sampling-depth 500 --m-metadata-file sample-metadata.tsv --p-n-jobs-or-threads 4 --output-dir core-metrics
-
+For sequence 2:
 qiime diversity core-metrics-phylogenetic --i-phylogeny rooted-tree2.qza --i-table feature_table.qza --p-sampling-depth 500 --m-metadata-file sample-metadata.tsv --p-n-jobs-or-threads 4 --output-dir core-metrics2
-
+For sequence 1:
 qiime feature-table relative-frequency --i-table core-metrics/rarefied_table.qza --o-relative-frequency-table core-metrics/realativerarefied_table
-
+For sequence 2:
 qiime feature-table relative-frequency --i-table core-metrics2/rarefied_table.qza --o-relative-frequency-table core-metrics2/realative_rarefied_table2
-
+For sequence 1:
 qiime diversity pcoa-biplot --i-features core-metrics/realativerarefied_table.qza --i-pcoa core-metrics/unweighted_unifrac_pcoa_results.qza --o-biplot core-metrics/unweighted_unifrac_pcoa_biplot
-
-qiime diversity pcoa-biplot --i-features core-metrics2/relative_rarefied_table2.qza --i-pcoa core-metrics2/unweighted_unifrac_pcoa_results.qza --o-biplot core-metrics2/unweighted_unifrac_pcoa_biplot2
-
-qiime emperor biplot --i-biplot core-metrics/unweighted_unifrac_pcoa_biplot.qza --m-sample-metadata-file sample-metadata.tsv --o-visualization core-metrics/alpha-group-significance
-
-qiime emperor biplot --i-biplot core-metrics2/unweighted_unifrac_pcoa_bioplot2.qza --m-sample-metadata-file sample-metadata.tsv --o-visualization core-metrics2/alpha-group-significance2
-
+For sequence 2:
+qiime diversity pcoa-biplot --i-features core-metrics2/realative_rarefied_table2.qza --i-pcoa core-metrics2/unweighted_unifrac_pcoa_results.qza --o-biplot core-metrics2/unweighted_unifrac_pcoa_biplot2
+For sequence 1:
+qiime emperor biplot --i-biplot core-metrics/unweighted_unifrac_pcoa_biplot.qza --m-sample-metadata-file sample-metadata.tsv --o-visualization core-metrics/unweighted_unifrac_pcoa_biplot
+For sequence 2:
+qiime emperor biplot --i-biplot core-metrics2/unweighted_unifrac_pcoa_biplot2.qza --m-sample-metadata-file sample-metadata.tsv --o-visualization core-metrics2/unweighted_unifrac_pcoa_biplot2
+For sequence 1:
+qiime diversity alpha-group-significance --i-alpha-diversity core-metrics/shannon_vector.qza --m-metadata-file sample-metadata.tsv --o-visualization core-metrics/alpha-group-significance
+For sequence 2:
+qiime diversity alpha-group-significance --i-alpha-diversity core-metrics2/shannon_vector.qza --m-metadata-file sample-metadata.tsv --o-visualization core-metrics2/alpha-group-significance2
