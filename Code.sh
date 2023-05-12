@@ -84,6 +84,9 @@ qiime feature-table relative-frequency --i-table core-metrics2/rarefied_table.qz
 
 qiime diversity pcoa-biplot --i-features core-metrics/realativerarefied_table.qza --i-pcoa core-metrics/unweighted_unifrac_pcoa_results.qza --o-biplot core-metrics/unweighted_unifrac_pcoa_biplot
 
-qiime emperor biplot --i-biplot core-metrics/unweighted_unifrac_pcoa_bioplot.qza --m-sample-metadata-file sample-metadata.tsv --o-visualization core-metrics/alpha-group-significance
+qiime diversity pcoa-biplot --i-features core-metrics2/relative_rarefied_table2.qza --i-pcoa core-metrics2/unweighted_unifrac_pcoa_results.qza --o-biplot core-metrics2/unweighted_unifrac_pcoa_biplot2
 
-qiime diversity pcoa-biplot --i-features core-metrics/relative_rarefied_table2.qza --i-pcoa core-metrics2/unweighted_unifrac_pcoa_results.qza --o-biplot core-metrics2/unweighted_unifrac_pcoa_biplot2
+qiime emperor biplot --i-biplot core-metrics/unweighted_unifrac_pcoa_biplot.qza --m-sample-metadata-file sample-metadata.tsv --o-visualization core-metrics/alpha-group-significance
+
+qiime emperor biplot --i-biplot core-metrics2/unweighted_unifrac_pcoa_bioplot2.qza --m-sample-metadata-file sample-metadata.tsv --o-visualization core-metrics2/alpha-group-significance2
+
