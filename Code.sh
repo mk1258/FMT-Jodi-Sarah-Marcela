@@ -74,4 +74,16 @@ qiime phylogeny align-to-tree-mafft-fasttree --i-sequences rep-seqs1.qza --o-ali
 For sequence 2:
 qiime phylogeny align-to-tree-mafft-fasttree --i-sequences rep-seqs.qza --o-alignment alignments2 --o-masked-alignment masked-alignment2 --o-tree unrooted-tree2 --o-rooted-tree rooted-tree2 --p-n-threads 4
 
-qiime diversity core-metrics-phylogenetic --i-phylogeny rooted-tree.qza --i-table feature_table1.qza --p-sampling-depth 1500 --m-metadata-file metadata.tsv --p-n-jobs-or-threads --output-dir core-metrics
+qiime diversity core-metrics-phylogenetic --i-phylogeny rooted-tree.qza --i-table feature_table1.qza --p-sampling-depth 500 --m-metadata-file sample-metadata.tsv --p-n-jobs-or-threads 4 --output-dir core-metrics
+
+qiime diversity core-metrics-phylogenetic --i-phylogeny rooted-tree2.qza --i-table feature_table.qza --p-sampling-depth 500 --m-metadata-file sample-metadata.tsv --p-n-jobs-or-threads 4 --output-dir core-metrics2
+
+qiime feature-table relative-frequency --i-table core-metrics/rarefied_table.qza --o-relative-frequency-table core-metrics/realativerarefied_table
+
+qiime feature-table relative-frequency --i-table core-metrics2/rarefied_table.qza --o-relative-frequency-table core-metrics2/realative_rarefied_table2
+
+qiime diversity pcoa-biplot --i-features core-metrics/realativerarefied_table.qza --i-pcoa core-metrics/unweighted_unifrac_pcoa_results.qza --o-biplot core-metrics/unweighted_unifrac_pcoa_biplot
+
+qiime emperor biplot --i-biplot core-metrics/unweighted_unifrac_pcoa_bioplot.qza --m-sample-metadata-file sample-metadata.tsv --o-visualization core-metrics/alpha-group-significance
+
+qiime diversity pcoa-biplot --i-features core-metrics/relative_rarefied_table2.qza --i-pcoa core-metrics2/unweighted_unifrac_pcoa_results.qza --o-biplot core-metrics2/unweighted_unifrac_pcoa_biplot2
