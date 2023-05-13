@@ -93,3 +93,27 @@ For sequence 1:
 qiime diversity alpha-group-significance --i-alpha-diversity core-metrics/shannon_vector.qza --m-metadata-file sample-metadata.tsv --o-visualization core-metrics/alpha-group-significance
 For sequence 2:
 qiime diversity alpha-group-significance --i-alpha-diversity core-metrics2/shannon_vector.qza --m-metadata-file sample-metadata.tsv --o-visualization core-metrics2/alpha-group-significance2
+
+get /home/users/jms1418/core-metrics/alpha-group-significance.qzv desktop
+
+get /home/users/jms1418/core-metrics2/alpha-group-significance2.qzv desktop
+
+get /home/users/jms1418/core-metrics/unweighted_unifrac_pcoa_biplot.qzv desktop
+
+get /home/users/jms1418/core-metrics2/unweighted_unifrac_pcoa_biplot2.qzv desktop
+
+get /home/users/jms1418/core-metrics/bray_curtis_emperor.qzv desktop
+
+get /home/users/jms1418/core-metrics2/bray_curtis_emperor2.qzv desktop
+
+get /home/users/jms1418/core-metrics/jaccard_emperor.qzv desktop
+
+get /home/users/jms1418/core-metrics2/jaccard_emperor2.qzv desktop
+
+get /home/users/jms1418/core-metrics/unweighted_unifrac_emperor.qzv desktop
+
+get /home/users/jms1418/core-metrics2/unweighted_unifrac_emperor2.qzv desktop
+
+get /home/users/jms1418/core-metrics/weighted_unifrac_emperor.qzv desktop
+
+get /home/users/jms1418/core-metrics2/weighted_unifrac_emperor2.qzv desktop
