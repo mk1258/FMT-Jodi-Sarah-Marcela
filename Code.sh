@@ -88,12 +88,11 @@ For sequence 1:
 qiime diversity pcoa-biplot --i-features core-metrics/realativerarefied_table.qza --i-pcoa core-metrics/unweighted_unifrac_pcoa_results.qza --o-biplot core-metrics/unweighted_unifrac_pcoa_biplot
 For sequence 2:
 qiime diversity pcoa-biplot --i-features core-metrics2/realative_rarefied_table2.qza --i-pcoa core-metrics2/unweighted_unifrac_pcoa_results.qza --o-biplot core-metrics2/unweighted_unifrac_pcoa_biplot2
-### Create box plots
 For sequence 1:
 qiime emperor biplot --i-biplot core-metrics/unweighted_unifrac_pcoa_biplot.qza --m-sample-metadata-file sample-metadata.tsv --o-visualization core-metrics/unweighted_unifrac_pcoa_biplot
 For sequence 2:
 qiime emperor biplot --i-biplot core-metrics2/unweighted_unifrac_pcoa_biplot2.qza --m-sample-metadata-file sample-metadata.tsv --o-visualization core-metrics2/unweighted_unifrac_pcoa_biplot2
-### Create alpha-diversity plots
+### Create alpha-diversity box plots
 For sequence 1:
 qiime diversity alpha-group-significance --i-alpha-diversity core-metrics/shannon_vector.qza --m-metadata-file sample-metadata.tsv --o-visualization core-metrics/alpha-group-significance
 For sequence 2:
