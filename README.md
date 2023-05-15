@@ -31,14 +31,14 @@ Figure 1. Bar plot of the relative frequency of bacteria at taxonomic level 3 se
 Figure 2. Bar plot of the relative frequency of bacteria at taxonomic level 3 separated by the two sample collection types of the second sequence obtained from Kang et al. (2017). The plot was created using the reference table created on VScode on the RON computing cluster with the conda qiime2-2022.8 environment. 
 
 
-<img width="1472" alt="Screenshot 2023-05-15 at 5 11 06 PM" src="https://github.com/jms1418/FMT-Jodi-Sarah-Marcela/assets/130576738/e1ac49a5-b02e-4b5b-a863-d440ba8ebc5d">
+<img width="1298" alt="Screenshot 2023-05-15 at 6 03 51 PM" src="https://github.com/jms1418/FMT-Jodi-Sarah-Marcela/assets/130576738/409ff05e-8de9-4f53-8c7d-b3a46185448e">
 
-Figure 3. Weighted unifrac emporer PCA plot of bacteria separated by the relative abundances and sequence differences between the three sample collection types of the first sequence obtained from Kang et al. (2017). Shows three axes indicating the respective amount of difference between the sample types. The plot was created using the relative frequency table created on VScode on the RON computing cluster with the conda qiime2-2022.8 environment. 
+Figure 3. Unweighted unifrac emporer PCA plot of bacteria separated by the sequence differences between the three sample collection types of the first sequence obtained from Kang et al. (2017). Shows three axes indicating the amount of difference between the sample collection types. The plot was created using the relative frequency table created on VScode on the RON computing cluster with the conda qiime2-2022.8 environment. 
 
 
-<img width="1631" alt="Screenshot 2023-05-15 at 5 31 08 PM" src="https://github.com/jms1418/FMT-Jodi-Sarah-Marcela/assets/130576738/8745e661-1ccf-4f7d-ab4a-0db1d955166c">
+<img width="1373" alt="Screenshot 2023-05-15 at 6 05 26 PM" src="https://github.com/jms1418/FMT-Jodi-Sarah-Marcela/assets/130576738/e6be3261-9b9f-45bf-a72d-d11fce9b34e3">
 
-Figure 4. Weighted unifrac emporer PCA plot of bacteria separated by the relative abundances and sequence differences between the two sample collection types of the second sequence obtained from Kang et al. (2017). Shows three axes indicating the respective amount of difference between the sample types. The plot was created using the relative frequency table created on VScode on the RON computing cluster with the conda qiime2-2022.8 environment. 
+Figure 4. Unweighted unifrac emporer PCA plot of bacteria separated by the sequence differences between the two sample collection types of the second sequence obtained from Kang et al. (2017). Shows three axes indicating the respective amount of difference between the sample collection types. The plot was created using the relative frequency table created on VScode on the RON computing cluster with the conda qiime2-2022.8 environment. 
 
 
 <img width="1130" alt="Screenshot 2023-05-15 at 5 36 19 PM" src="https://github.com/jms1418/FMT-Jodi-Sarah-Marcela/assets/130576738/333418a0-571f-4e49-babe-45d427b1e342">
