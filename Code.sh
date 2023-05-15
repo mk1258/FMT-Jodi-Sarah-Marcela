@@ -73,47 +73,41 @@ For sequence 1:
 qiime phylogeny align-to-tree-mafft-fasttree --i-sequences rep-seqs1.qza --o-alignment alignments --o-masked-alignment masked-alignment --o-tree unrooted-tree --o-rooted-tree rooted-tree --p-n-threads 4
 For sequence 2:
 qiime phylogeny align-to-tree-mafft-fasttree --i-sequences rep-seqs.qza --o-alignment alignments2 --o-masked-alignment masked-alignment2 --o-tree unrooted-tree2 --o-rooted-tree rooted-tree2 --p-n-threads 4
+### Create Core-metrics folders
 For sequence 1:
 qiime diversity core-metrics-phylogenetic --i-phylogeny rooted-tree.qza --i-table feature_table1.qza --p-sampling-depth 500 --m-metadata-file sample-metadata.tsv --p-n-jobs-or-threads 4 --output-dir core-metrics
 For sequence 2:
 qiime diversity core-metrics-phylogenetic --i-phylogeny rooted-tree2.qza --i-table feature_table.qza --p-sampling-depth 500 --m-metadata-file sample-metadata.tsv --p-n-jobs-or-threads 4 --output-dir core-metrics2
+### Create table for more graph creations
 For sequence 1:
 qiime feature-table relative-frequency --i-table core-metrics/rarefied_table.qza --o-relative-frequency-table core-metrics/realativerarefied_table
 For sequence 2:
 qiime feature-table relative-frequency --i-table core-metrics2/rarefied_table.qza --o-relative-frequency-table core-metrics2/realative_rarefied_table2
+### Create PCA plots
 For sequence 1:
 qiime diversity pcoa-biplot --i-features core-metrics/realativerarefied_table.qza --i-pcoa core-metrics/unweighted_unifrac_pcoa_results.qza --o-biplot core-metrics/unweighted_unifrac_pcoa_biplot
 For sequence 2:
 qiime diversity pcoa-biplot --i-features core-metrics2/realative_rarefied_table2.qza --i-pcoa core-metrics2/unweighted_unifrac_pcoa_results.qza --o-biplot core-metrics2/unweighted_unifrac_pcoa_biplot2
+### Create box plots
 For sequence 1:
 qiime emperor biplot --i-biplot core-metrics/unweighted_unifrac_pcoa_biplot.qza --m-sample-metadata-file sample-metadata.tsv --o-visualization core-metrics/unweighted_unifrac_pcoa_biplot
 For sequence 2:
 qiime emperor biplot --i-biplot core-metrics2/unweighted_unifrac_pcoa_biplot2.qza --m-sample-metadata-file sample-metadata.tsv --o-visualization core-metrics2/unweighted_unifrac_pcoa_biplot2
+### Create alpha-diversity plots
 For sequence 1:
 qiime diversity alpha-group-significance --i-alpha-diversity core-metrics/shannon_vector.qza --m-metadata-file sample-metadata.tsv --o-visualization core-metrics/alpha-group-significance
 For sequence 2:
 qiime diversity alpha-group-significance --i-alpha-diversity core-metrics2/shannon_vector.qza --m-metadata-file sample-metadata.tsv --o-visualization core-metrics2/alpha-group-significance2
-
+### Download all created graphs to desktop for viewing
 get /home/users/jms1418/core-metrics/alpha-group-significance.qzv desktop
-
 get /home/users/jms1418/core-metrics2/alpha-group-significance2.qzv desktop
-
 get /home/users/jms1418/core-metrics/unweighted_unifrac_pcoa_biplot.qzv desktop
-
 get /home/users/jms1418/core-metrics2/unweighted_unifrac_pcoa_biplot2.qzv desktop
-
 get /home/users/jms1418/core-metrics/bray_curtis_emperor.qzv desktop
-
 get /home/users/jms1418/core-metrics2/bray_curtis_emperor2.qzv desktop
-
 get /home/users/jms1418/core-metrics/jaccard_emperor.qzv desktop
-
 get /home/users/jms1418/core-metrics2/jaccard_emperor2.qzv desktop
-
 get /home/users/jms1418/core-metrics/unweighted_unifrac_emperor.qzv desktop
-
 get /home/users/jms1418/core-metrics2/unweighted_unifrac_emperor2.qzv desktop
-
 get /home/users/jms1418/core-metrics/weighted_unifrac_emperor.qzv desktop
-
 get /home/users/jms1418/core-metrics2/weighted_unifrac_emperor2.qzv desktop
