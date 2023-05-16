@@ -1,9 +1,15 @@
 # FMT-Jodi-Sarah-Marcela
 
-## Authors
 Jodi Stetser
+
 Sarah Holmes
+
 Marcela Klofac
+
+## Metabarcoding of Human Guts for Fecal Microbiota Transplants
+
+## Authors
+
 
 ## what we are doing our project on
 /tmp/gen711_project_data/FMT
@@ -18,82 +24,39 @@ In the experimental group, the children underwent two weeks of antibiotic treatm
 In our analysis, we compared the bacterial diversity, represented by the frequency of several bacterial species, between stool and swab samples. The bacteria types found in these two sample collections was further compared to donor sample controls of SHGM.
 ## Methods
 
-### make directory trimmed_fastqs
-mkdir trimmed_fastqs
-mkdir trimmed_fastqs2
-### move into environment genomics
-conda activate genomics
-### copy fastp-single.sh file into home directory
-cp /tmp/gen711_project_data/fastp-single.sh ~/fastp-single.sh
-### change mode of the file 
-chmod +x ~/fastp-single.sh
-### cutoff poly-g lengths of FMT files and place into trimmed_fastqs
-./fastp-single.sh 120 /tmp/gen711_project_data/FMT_3/fmt-tutorial-demux-2 trimmed_fastqs2
-./fastp-single.sh 120 /tmp/gen711_project_data/FMT_3/fmt-tutorial-demux-1 trimmed_fastqs
-### check that neither directory is empty
-cd trimmed_fastqs
-ls
-cd trimmed_fastqs2
-ls
-### activate the qiime environment
-conda activate qiime2-2022.8
-### import the trimmed FASTQs into qiime files
-qiime tools import --type "SampleData[SequencesWithQuality]" --input-format CasavaOneEightSingleLanePerSampleDirFmt --input-path trimmed_fastqs2 --output-path FMT_trimmed_fastq2
-qiime tools import --type "SampleData[SequencesWithQuality]" --input-format CasavaOneEightSingleLanePerSampleDirFmt --input-path trimmed_fastqs --output-path FMT_trimmed_fastqs1
-### remove primers and adapters of the trimmed fastq sequences
-### CUTADAPT: Remove primers and adapter from the trimmed fastq sequences
-For Sequence 1:
-qiime cutadapt trim-single \
---i-demultiplexed-sequences trimmed_fastqs/FMT_trimmed_fastqs1.qza \
---p-front TACGTATGGTGCA \
---p-discard-untrimmed \
---p-match-adapter-wildcards \
---verbose \
---o-trimmed-sequences trimmed_fastqs/FMT_cutadapt1.qza
 
-For Sequence 2:
-qiime cutadapt trim-single \
---i-demultiplexed-sequences trimmed_fastqs2/FMT_trimmed_fastqs2.qza \
---p-front TACGTATGGTGCA \
---p-discard-untrimmed \
---p-match-adapter-wildcards \
---verbose \
---o-trimmed-sequences trimmed_fastqs2/FMT_cutadapt2.qza
-
-### make summary.qzv files for each sequence
-qiime demux summarize --i-data trimmed_fastqs/FMT_cutadapt1.qza --o-visualization trimmed_fastqs/FMT_demux1.qzv
-qiime demux summarize --i-data trimmed_fastqs2/FMT_cutadapt2.qza --o-visualization trimmed_fastqs2/FMT_demux2.qzv
-### denoising - remove errors & low quality reads in the sequences
-qiime dada2 denoise-single --i-demultiplexed-seqs trimmed_fastqs/FMT_cutadapt1.qza --p-trunc-len 50 --p-trim-left 13 --p-n-threads 4 --o-denoising-stats denoising-stats1.qza --o-table feature_table1.qza --o-representative-sequences rep-seqs1.qza
-qiime dada2 denoise-single --i-demultiplexed-seqs trimmed_fastqs2/FMT_cutadapt2.qza --p-trunc-len 50 --p-trim-left 13 --p-n-threads 4 --o-denoising-stats denoising-stats2.qza --o-table feature_table2.qza --o-representative-sequences rep-seqs2.qza
-### tabulate visualization
-qiime metadata tabulate --m-input-file denoising-stats1.qza --o-visualization denoising-stats1.qzv
-qiime metadata tabulate --m-input-file denoising-stats2.qza --o-visualization denoising-stats2.qzv
-### tabulate table visualization
-qiime feature-table tabulate-seqs --i-data rep-seqs1.qza --o-visualization rep-seqs1.qzv
-qiime feature-table tabulate-seqs --i-data rep-seqs2.qza --o-visualization rep-seqs2.qzv
-### make directory for graphs
-mkdir FMT_trimmed
-### merge the sequences for tables 
-qiime feature-table merge-seqs --i-data rep-seqs1.qza --i-data rep-seqs2.qza --o-merged-data FMT_merged/merged.rep-seqs.qza
-### classify data to a reference sequence & assign taxonomy
-qiime feature-classifier classify-sklearn --i-classifier /tmp/gen711_project_data/reference_databases/classifier.qza --i-reads FMT_merged/merged.rep-seqs.qza --o-classification FMT_merged/FMT-taxonomy.qza
-### create bar graph 1
-qiime taxa barplot --i-table feature_table1.qza --i-taxonomy FMT_merged/FMT-taxonomy.qza --o-visualization FMT_merged/barplot-1.qzv
-### create bar graph 2
-qiime taxa barplot --i-table feature_table.qza --i-taxonomy FMT_merged/FMT-taxonomy.qza --o-visualization FMT_merged/barplot-2.qzv
-### add metadata
-qiime taxa barplot --i-table feature_table1.qza --m-metadata-file sample-metadata.tsv --i-taxonomy FMT_merged/FMT-taxonomy.qza --o-visualization my-barplot.qzv 
-qiime taxa barplot --i-table feature_table2.qza --m-metadata-file sample-metadata.tsv --i-taxonomy FMT_merged/FMT-taxonomy.qza --o-visualization my-barplot2.qzv
-### create feature table
-qiime feature-table filter-samples --i-table feature_table1.qza --m-metadata-file metadata.tsv --o-filtered-table new_samples_table1.qza
-qiime feature-table filter-samples --i-table feature_table2.qza --m-metadata-file metadata.tsv --o-filtered-table new_samples_table2.qza
 
 ## Findings
-### plot 1
-https://view.qiime2.org/visualization/?type=html&src=ae7abd73-d1b0-4525-9b3d-57f461424987
-### plot 2
-https://view.qiime2.org/visualization/?type=html&src=7d8b9b0e-8727-4742-95da-f26bf93c3b2d
+<img width="1568" alt="Screenshot 2023-05-15 at 3 34 36 PM" src="https://github.com/jms1418/FMT-Jodi-Sarah-Marcela/assets/130576738/eb34f591-559e-466c-af2a-220eff52444f">
+
+Figure 1. Bar plot of the relative frequency of bacteria at taxonomic level 3 separated by the three sample collection types of the first sequence obtained from Kang et al. (2017). The plot was created using the reference table created on VScode on the RON computing cluster with the conda qiime2-2022.8 environment. 
+
+
+<img width="837" alt="Screenshot 2023-05-15 at 4 03 08 PM" src="https://github.com/jms1418/FMT-Jodi-Sarah-Marcela/assets/130576738/8ec1aa01-679a-4d0f-9c59-b9dd2abb5165">
+
+Figure 2. Bar plot of the relative frequency of bacteria at taxonomic level 3 separated by the two sample collection types of the second sequence obtained from Kang et al. (2017). The plot was created using the reference table created on VScode on the RON computing cluster with the conda qiime2-2022.8 environment. 
+
+
+<img width="1298" alt="Screenshot 2023-05-15 at 6 03 51 PM" src="https://github.com/jms1418/FMT-Jodi-Sarah-Marcela/assets/130576738/409ff05e-8de9-4f53-8c7d-b3a46185448e">
+
+Figure 3. Unweighted unifrac emporer PCA plot of bacteria separated by the sequence differences between the three sample collection types of the first sequence obtained from Kang et al. (2017). Shows three axes indicating the amount of difference between the sample collection types. The plot was created using the relative frequency table created on VScode on the RON computing cluster with the conda qiime2-2022.8 environment. 
+
+
+<img width="1373" alt="Screenshot 2023-05-15 at 6 05 26 PM" src="https://github.com/jms1418/FMT-Jodi-Sarah-Marcela/assets/130576738/e6be3261-9b9f-45bf-a72d-d11fce9b34e3">
+
+Figure 4. Unweighted unifrac emporer PCA plot of bacteria separated by the sequence differences between the two sample collection types of the second sequence obtained from Kang et al. (2017). Shows three axes indicating the respective amount of difference between the sample collection types. The plot was created using the relative frequency table created on VScode on the RON computing cluster with the conda qiime2-2022.8 environment. 
+
+
+<img width="1130" alt="Screenshot 2023-05-15 at 5 36 19 PM" src="https://github.com/jms1418/FMT-Jodi-Sarah-Marcela/assets/130576738/333418a0-571f-4e49-babe-45d427b1e342">
+<img width="1679" alt="Screenshot 2023-05-15 at 5 36 30 PM" src="https://github.com/jms1418/FMT-Jodi-Sarah-Marcela/assets/130576738/4f2df1a6-2399-4225-9f3b-d99d0d213571">
+
+Figure 5. Box plot of the diversity of the alpha diversity data and the three sample collection types of the first sequence obtained from Kang et al. (2017) based on the Shannon entropy measure. The plot was created using the shannon vector created on VScode and the sample metadata on the RON computing cluster with the conda qiime2-2022.8 environment. 
+
+
+<img width="1638" alt="Screenshot 2023-05-15 at 5 54 21 PM" src="https://github.com/jms1418/FMT-Jodi-Sarah-Marcela/assets/130576738/82f4a4dc-628d-40b1-bf6a-451b83314236">
+
+Figure 6. Box plot of the diversity of the alpha diversity data and the two sample collection types of the second sequence obtained from Kang et al. (2017) based on the Shannon entropy measure. The plot was created using the shannon vector created on VScode and the sample metadata on the RON computing cluster with the conda qiime2-2022.8 environment. 
+
 
 ## Database
 classifier = /tmp/gen711_project_data/reference_databases/classifier.qza
