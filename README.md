@@ -39,12 +39,12 @@ Figure 2. Bar plot of the relative frequency of bacteria at taxonomic level 3 se
 
 <img width="1298" alt="Screenshot 2023-05-15 at 6 03 51 PM" src="https://github.com/jms1418/FMT-Jodi-Sarah-Marcela/assets/130576738/409ff05e-8de9-4f53-8c7d-b3a46185448e">
 
-Figure 3. Unweighted unifrac emporer PCA plot of microbial composition comparisons between the three sample collection types of the first sequence obtained from Kang et al. (2017). Shows three axes indicating the amount of difference between the sample collection types. The plot was created using the relative frequency table created on VScode on the RON computing cluster with the conda qiime2-2022.8 environment.
+Figure 3. Unweighted unifrac emperor PCA plot of microbial composition comparisons between the three sample collection types of the first sequence obtained from Kang et al. (2017). Shows three axes indicating the amount of difference between the sample collection types. The plot was created using the relative frequency table created on VScode on the RON computing cluster with the conda qiime2-2022.8 environment.
 
 
 <img width="1373" alt="Screenshot 2023-05-15 at 6 05 26 PM" src="https://github.com/jms1418/FMT-Jodi-Sarah-Marcela/assets/130576738/e6be3261-9b9f-45bf-a72d-d11fce9b34e3">
 
-Figure 4. Unweighted unifrac emporer PCA plot of microbial composition comparisons between the two sample collection types of the second sequence obtained from Kang et al. (2017). Shows three axes indicating the respective amount of difference between the sample collection types. The plot was created using the relative frequency table created on VScode on the RON computing cluster with the conda qiime2-2022.8 environment. 
+Figure 4. Unweighted unifrac emperor PCA plot of microbial composition comparisons between the two sample collection types of the second sequence obtained from Kang et al. (2017). Shows three axes indicating the respective amount of difference between the sample collection types. The plot was created using the relative frequency table created on VScode on the RON computing cluster with the conda qiime2-2022.8 environment. 
 
 
 <img width="1130" alt="Screenshot 2023-05-15 at 5 36 19 PM" src="https://github.com/jms1418/FMT-Jodi-Sarah-Marcela/assets/130576738/333418a0-571f-4e49-babe-45d427b1e342">
