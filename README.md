@@ -58,5 +58,4 @@ Figure 5. Box plot of the diversity of the alpha diversity data and the three sa
 Figure 6. Box plot of the diversity of the alpha diversity data and the two sample collection types of the second sequence obtained from Kang et al. (2017) based on the Shannon entropy measure. The plot was created using the shannon vector created on VScode and the sample metadata on the RON computing cluster with the conda qiime2-2022.8 environment. 
 
 
-## Database
-classifier = /tmp/gen711_project_data/reference_databases/classifier.qza
+
