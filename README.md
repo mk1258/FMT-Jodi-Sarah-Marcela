@@ -24,6 +24,15 @@ In the experimental group, the children underwent two weeks of antibiotic treatm
 In our analysis, we compared the bacterial diversity, represented by the frequency of several bacterial species, between stool and swab samples. The bacteria types found in these two sample collections was further compared to donor sample controls of SHGM.
 ## Methods
 
+Kang et al 2017 sequences were downloaded in fastp-single.sh format into our home directory and converted into fastq format, trimmed, and then converted into qiime files.
+We used the following programs loaded with a conda qiime2-2022.8 environment on the RON computing cluster, each was ran twice for each of the two sequences.
+
+First each sequence was imported into the qiime environment using qiime tools import. Then both sequences were run through the cutadapt command, removing all adapter sequences, primers, and poly-A-tails. Then the sequences were run through the demux summarize command, which summmarized the demultiplexed sequences. Next, under the dada2 pipeline, both sequences were run through a denoising step, which denoised the single end sequences, dereplicated them, and filtered the chimeras.
+
+Next, in order to visualize the denoised data, both sequences were run through the metadata tabulate and feature table tabulate command, which allowed the file to be viewed as metadata in table form. Then the sequences were merged using the feature table merge-seqs command. The representative sequences were classified and the taxonomic assignments were visualized using the feature-classifier classifier-sklearn command. Then the taxa barplot command was used to generate a bar graph using the feature table and merged data. These barplot files were then downloaded to the computer under a new terminal in the sftp RON computing cluster.
+
+Then, the phylogeny align-to-tree-mafft-fasttree command was used to create a tree for phylogenetic diversity analysis. Next,the diversity core-metrics-phylogenetic command was used for diversity analysis and visualization. An additional feature table was created using the feature-table relative-frequency command. Then the diversity pcoa-biplot command was run to create pca plots shwoing features and taxonomic information. Then the emperor biplot command was run, which allowed the biplot vectors to be colored by taxonomy.
+Next, the diversity alpha-group-significance command was run to create alpha diversity boxplots. Finally, all graphs were downloaded to the desktop using the get command. 
 
 
 ## Findings
@@ -39,12 +48,12 @@ Figure 2. Bar plot of the relative frequency of bacteria at taxonomic level 3 se
 
 <img width="1298" alt="Screenshot 2023-05-15 at 6 03 51 PM" src="https://github.com/jms1418/FMT-Jodi-Sarah-Marcela/assets/130576738/409ff05e-8de9-4f53-8c7d-b3a46185448e">
 
-Figure 3. Unweighted unifrac emporer PCA plot of microbial composition comparisons between the three sample collection types of the first sequence obtained from Kang et al. (2017). Shows three axes indicating the amount of difference between the sample collection types. The plot was created using the relative frequency table created on VScode on the RON computing cluster with the conda qiime2-2022.8 environment.
+Figure 3. Unweighted unifrac emporer PCA plot of bacteria separated by the sequence differences between the three sample collection types of the first sequence obtained from Kang et al. (2017). Shows three axes indicating the amount of difference between the sample collection types. The plot was created using the relative frequency table created on VScode on the RON computing cluster with the conda qiime2-2022.8 environment. 
 
 
 <img width="1373" alt="Screenshot 2023-05-15 at 6 05 26 PM" src="https://github.com/jms1418/FMT-Jodi-Sarah-Marcela/assets/130576738/e6be3261-9b9f-45bf-a72d-d11fce9b34e3">
 
-Figure 4. Unweighted unifrac emporer PCA plot of microbial composition comparisons between the two sample collection types of the second sequence obtained from Kang et al. (2017). Shows three axes indicating the respective amount of difference between the sample collection types. The plot was created using the relative frequency table created on VScode on the RON computing cluster with the conda qiime2-2022.8 environment. 
+Figure 4. Unweighted unifrac emporer PCA plot of bacteria separated by the sequence differences between the two sample collection types of the second sequence obtained from Kang et al. (2017). Shows three axes indicating the respective amount of difference between the sample collection types. The plot was created using the relative frequency table created on VScode on the RON computing cluster with the conda qiime2-2022.8 environment. 
 
 
 <img width="1130" alt="Screenshot 2023-05-15 at 5 36 19 PM" src="https://github.com/jms1418/FMT-Jodi-Sarah-Marcela/assets/130576738/333418a0-571f-4e49-babe-45d427b1e342">
@@ -58,4 +67,5 @@ Figure 5. Box plot of the diversity of the alpha diversity data and the three sa
 Figure 6. Box plot of the diversity of the alpha diversity data and the two sample collection types of the second sequence obtained from Kang et al. (2017) based on the Shannon entropy measure. The plot was created using the shannon vector created on VScode and the sample metadata on the RON computing cluster with the conda qiime2-2022.8 environment. 
 
 
-
+## Database
+classifier = /tmp/gen711_project_data/reference_databases/classifier.qza
